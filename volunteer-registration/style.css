@@ -1,0 +1,265 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+:root {
+    --background-color: #040306;
+    --text-color: #000;
+    --container-bg-color: rgba(255, 255, 255, 0.15); /* Glass effect */
+    --container-border-color: rgba(255, 255, 255, 0.2);
+    --input-bg-color: rgba(255, 255, 255, 0.1);
+    --link-color: #00ffa2;
+    --header-footer-bg-color: transparent;
+    --button-color: #02835f;
+}
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.header {
+background-color: var(--header-footer-bg-color);
+padding: 20px;
+width: 100%;
+display: flex;
+justify-content: center; /* Center align the content horizontally */
+align-items: center;
+box-sizing: border-box;
+color: var(--link-color);
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+}
+
+.header h1 {
+padding: 20px;
+text-align: center;
+display: inline-block;
+box-sizing: border-box;
+color: var(--link-color);
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+font-size: 28px; /* Adjust font size for prominence */
+transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition for transform and opacity */
+}
+
+.header h1:hover {
+transform: scale(1.05); /* Slightly enlarge the text on hover */
+opacity: 0.9; /* Slightly reduce opacity on hover */
+}
+
+
+
+
+.container {
+    background-color: var(--container-bg-color);
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--container-border-color);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container h2 {
+    color: var(--link-color);
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+input[type="text"], input[type="password"], select,input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid var(--container-border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus,input[type="email"]:focus {
+    outline: none;
+    border-color: var(--link-color);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 5px 15px rgba(2, 131, 95, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #00d89f;
+    transform: translateY(-5px) rotateY(15deg);
+    box-shadow: 0px 10px 30px rgba(2, 131, 95, 0.7);
+}
+
+.footer {
+    background-color: var(--header-footer-bg-color);
+    padding: 10px 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+.header {
+padding: 15px;
+display: flex;
+justify-content: center; /* Center align the content horizontally */
+}
+
+.header h1 {
+font-size: 24px; /* Adjust font size for smaller screens */
+text-align: center; /* Ensure text is centered */
+}
+
+.container {
+width: 90%;
+padding: 20px;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Reduced shadow for smaller screens */
+border-radius: 10px; /* Slightly smaller border radius */
+margin: 0 auto; /* Center the container */
+}
+
+input[type="text"], input[type="password"], select, input[type="email"] {
+width: calc(100% - 20px); /* Adjust width for smaller padding */
+padding: 12px;
+box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button {
+font-size: 16px; /* Adjust font size for smaller screens */
+padding: 12px;
+}
+}
+
+@media (max-width: 480px) {
+.header {
+padding: 10px;
+flex-direction: column; /* Stack header content vertically */
+align-items: center; /* Center align the content */
+}
+
+.header h1 {
+font-size: 20px; /* Further reduce font size */
+text-align: center; /* Ensure text is centered */
+}
+
+.container {
+width: 95%;
+padding: 15px;
+box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Further reduce shadow */
+border-radius: 8px; /* Further reduce border radius */
+margin: 0 auto; /* Center the container */
+}
+
+input[type="text"], input[type="password"], select,input[type="email"] {
+width: calc(100% - 24px); /* Adjust width for very small screens */
+padding: 10px;
+box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button {
+font-size: 14px; /* Further reduce font size */
+padding: 10px;
+}
+}
+
+@media (max-width: 320px) {
+.header {
+padding: 8px;
+flex-direction: column; /* Stack header content vertically */
+align-items: center; /* Center align the content */
+}
+
+.header h1 {
+font-size: 18px; /* Further reduce font size */
+text-align: center; /* Ensure text is centered */
+}
+
+.container {
+width: 80%;
+padding: 10px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Minimal shadow */
+border-radius: 6px; /* Minimal border radius */
+margin: 0 auto; /* Center the container */
+}
+
+input[type="text"], input[type="password"], select,input[type="email"] {
+width: calc(100% - 35px); /* Adjust width for very tiny screens */
+padding: 8px;
+box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button {
+width: calc(100% - 35px);
+font-size: 12px; /* Smallest font size for tiny screens */
+padding: 8px;
+}
+}
+

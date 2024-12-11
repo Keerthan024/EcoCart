@@ -1,0 +1,162 @@
+
+        :root {
+            --background-color: #040306;
+            --text-color: #fff;
+            --container-bg-color: #121212;
+            --input-bg-color: #1f1f1f;
+            --border-color: #333;
+            --link-color: #1ed760;
+            --header-footer-bg-color: #040306;
+        }
+
+        body.light-mode {
+            --background-color: #fff;
+            --text-color: #000;
+            --container-bg-color: #f1f1f1;
+            --input-bg-color: #fff;
+            --border-color: #ccc;
+            --link-color: #1ed760;
+            --header-footer-bg-color: #f1f1f1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header {
+            background-color: var(--header-footer-bg-color);
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--link-color);
+        }
+
+        .theme-switcher button {
+            background-color: var(--link-color);
+            color: var(--text-color);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .container {
+            background-color: var(--container-bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 320px;
+            max-width: 90%;
+            margin: 20px auto; /* Center align container */
+            transition: background-color 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+        }
+
+        .container h2 {
+            color: var(--link-color);
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--link-color);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: var(--link-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #24d660; /* Lighter green on hover */
+            transform: scale(1.05); /* Slight scaling effect */
+        }
+
+        .footer {
+            background-color: var(--header-footer-bg-color);
+            padding: 10px 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 75%;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .theme-switcher {
+                margin-top: 10px;
+                align-self: flex-end;
+            }
+        }
+        .success {
+            color: #1ed760; margin: 10%;
+        }
+        .error {
+            color: #e21b1b; margin: 10%;
+        }

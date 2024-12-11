@@ -1,0 +1,99 @@
+SQL Query to create the volunteers database
+
+CREATE DATABASE volunteers;
+
+--------------------------------------------
+
+SQL Query to create the volunteers table
+
+CREATE TABLE volunteers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    mobile VARCHAR(15) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+---------------------------------------------
+
+SQL Query to create the company table
+
+CREATE TABLE company (
+    id INT AUTO_INCREMENT PRIMARY KEY,       -- Unique identifier for each application
+    name VARCHAR(100) NOT NULL,              -- Name of the applicant
+    mobileNumber VARCHAR(15) NOT NULL,       -- Mobile number of the applicant
+    email VARCHAR(255) UNIQUE NOT NULL,      -- Email address (unique for each applicant)
+    logo VARCHAR(255) DEFAULT NULL,          -- Filename of the uploaded logo
+    status VARCHAR(50) NOT NULL,             -- Status of the application (e.g., Pending, Approved, etc.)
+    password VARCHAR(255) NOT NULL,          -- Password for the application (should be hashed)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Timestamp for when the record was created
+);
+
+----------------------------------------------
+
+SQL Query to create the admin table
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,       -- Unique identifier for each application
+    name VARCHAR(100) NOT NULL,              -- Name of the applicant
+    mobileNumber VARCHAR(15) NOT NULL,       -- Mobile number of the applicant
+    email VARCHAR(255) UNIQUE NOT NULL,      -- Email address (unique for each applicant)
+    password VARCHAR(255) NOT NULL,          -- Password for the application (should be hashed)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Timestamp for when the record was created
+);
+
+------------------------------------------------
+
+SQL Query to create the events table
+
+CREATE TABLE events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    total_seats INT NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    stipend DECIMAL(10, 2) NOT NULL,
+    from_date DATE NOT NULL,
+    to_date DATE NOT NULL,
+    working_time_from TIME NOT NULL,
+    working_time_to TIME NOT NULL,
+    poster_path VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+-------------------------------------
+ALTER TABLE events ADD remaining_seats INT NOT NULL;
+-------------------------------------
+UPDATE events SET remaining_seats = total_seats;
+-------------------------------------
+
+applicant table
+CREATE TABLE `applicants` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each application
+    `user_id` INT NOT NULL,              -- References the ID from volunteers table
+    `event_id` INT NOT NULL,             -- References the ID from events table
+    `applied_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp for when the application was submitted
+    FOREIGN KEY (`user_id`) REFERENCES `volunteers`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`event_id`) REFERENCES `events`(`id`) ON DELETE CASCADE
+);
+--------------------------------------------------
+ALTER TABLE `applicants`
+ADD COLUMN `status` ENUM('Applied', 'Confirmed') NOT NULL DEFAULT 'Applied';
+----------------------------------------------------
+-- Add columns to the admin table
+ALTER TABLE admin
+ADD COLUMN reset_token VARCHAR(255) NULL,
+ADD COLUMN reset_token_expiry DATETIME NULL;
+
+-- Add columns to the company table
+ALTER TABLE company
+ADD COLUMN reset_token VARCHAR(255) NULL,
+ADD COLUMN reset_token_expiry DATETIME NULL;
+
+-- Add columns to the volunteers table
+ALTER TABLE volunteers
+ADD COLUMN reset_token VARCHAR(255) NULL,
+ADD COLUMN reset_token_expiry DATETIME NULL;

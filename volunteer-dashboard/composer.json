@@ -1,0 +1,10 @@
+{
+    "require": {
+        "phpoffice/phpword": "^1.2",
+        "endroid/qr-code": "^5.0",
+        "dompdf/dompdf": "^3.0",
+        "mpdf/mpdf": "^8.2",
+        "phpoffice/common": "^1.0",
+        "tecnickcom/tcpdf": "^6.7"
+    }
+}
